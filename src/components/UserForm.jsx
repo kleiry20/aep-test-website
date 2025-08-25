@@ -48,7 +48,7 @@ export default function UserForm() {
     // Dispatch Adobe Launch custom event
     document.dispatchEvent(new CustomEvent("formSubmitComplete"));
 
-    console.log("✅ Form submitted:", finalData);
+    console.log("Form submitted:", finalData);
     console.log("SessionStorage value:", sessionStorage.getItem("formSubmit"));
 
     alert("Form submitted successfully!");
