@@ -2,14 +2,16 @@ import React, { useState } from "react";
 
 export default function UserForm() {
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
+    nationality: "",
     age: "",
     gender: "",
     dob: "",
     company: "",
-    message: "",
-    testField: "",
+    customMessage: "",
+    customNumber: "",
   });
 
   // Handle input changes
@@ -32,14 +34,16 @@ export default function UserForm() {
 
     // Fallback defaults if fields are empty
     const finalData = {
-      name: formData.name || "name",
+      firstName: formData.firstName || "Joe",
+      lastName: formData.lastName || "Keery",
       email: formData.email || "email@test.com",
+      nationality: formData.nationality || "Indian",
       age: formData.age || 0,
-      gender: formData.gender || "Female",
+      gender: formData.gender || "Male",
       dob: formData.dob || "2018-01-12",
       company: formData.company || "company",
-      message: formData.message || "message",
-      testField: formData.testField || "test",
+      customMessage: formData.customMessage || "customMessage",
+      customNumber: formData.customNumber || "test",
     };
 
     // Save data to sessionStorage (for Adobe Data Elements)
@@ -63,11 +67,21 @@ export default function UserForm() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name */}
           <div>
-            <label className="block text-gray-700 mb-1">Name</label>
+            <label className="block text-gray-700 mb-1">First Name</label>
             <input
               type="text"
-              name="name"
-              value={formData.name}
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300"
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700 mb-1">Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300"
             />
@@ -86,8 +100,21 @@ export default function UserForm() {
             />
           </div>
 
-          {/* Age */}
+          {/* Nationality */}
           <div>
+            <label className="block text-gray-700 mb-1">Nationality</label>
+            <input
+              type="text"
+              name="nationality"
+              required
+              value={formData.nationality}
+              onChange={handleChange}
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300"
+            />
+          </div>
+
+          {/* Age */}
+          {/* <div>
             <label className="block text-gray-700 mb-1">Age</label>
             <input
               type="number"
@@ -96,7 +123,7 @@ export default function UserForm() {
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300"
             />
-          </div>
+          </div> */}
 
           {/* Gender */}
           <div>
@@ -141,25 +168,27 @@ export default function UserForm() {
             />
           </div>
 
-          {/* Message */}
+          {/* customMessage */}
           <div>
-            <label className="block text-gray-700 mb-1">Your Message</label>
+            <label className="block text-gray-700 mb-1">
+              Your customMessage
+            </label>
             <input
               type="text"
-              name="message"
-              value={formData.message}
+              name="customMessage"
+              value={formData.customMessage}
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300"
             />
           </div>
 
-          {/* Test Field */}
+          {/* customNumber */}
           <div>
-            <label className="block text-gray-700 mb-1">Test Field</label>
+            <label className="block text-gray-700 mb-1">Custom Number</label>
             <input
               type="text"
-              name="testField"
-              value={formData.testField}
+              name="customNumber"
+              value={formData.customNumber}
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300"
             />
